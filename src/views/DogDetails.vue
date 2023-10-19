@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[800px] mx-auto p-8">
+  <div class="max-w-[800px] font1 mx-auto p-8">
     <div>
       <h1 class="text-4xl font-bold mb-5 text-orange-500">
         <!-- {{ meal.strMeal }} -->

@@ -2,3 +2,6 @@
 export function getToken(state) {
   return state.auth.token;
 }
+export function isAuthenticated(state) {
+  return !!state.auth.token;
+}

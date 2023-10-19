@@ -1,32 +1,27 @@
 <template>
-  <div>
+  <div class="font1">
     <!-- <pre>{{ dogbreed }}</pre> -->
-    <div class="my-4">
+    <div class="mt-[4rem] text-center">
       <div>
-        <h2 class="font-bold text-[3rem]">Amazing breeds of dogs i love</h2>
+        <h2 class="font-bold text-[1.5rem] md:text-[3rem] text-[#5d5398]">
+          RANDOM DOG BREEDS AROUND THE WORLD
+        </h2>
       </div>
       <div>
-        <span class="text-grey"
-          >click on them to know more about their origin</span
-        >
+        <h3 class="text-grey text-[1rem] font-bold md:text-[2rem ]">
+          click an image to see more
+        </h3>
       </div>
     </div>
     <!-- search -->
-    <div class="px-8 pb-3 flex items-center w-full">
-      <div class="w-full">
-        <!-- <input
-          type="text"
-          v-model="keyword"
-          class="rounded border-2 bg-white p-[0.5rem] border-gray-200 focus:ring-orange-500 focus:border-orange-500 w-full"
-          placeholder="Search by dog breeds"
-          @change="searchByBreeds"
-        /> -->
+    <div class="flex justify-center my-[3rem]">
+      <div class="w-[50%]">
         <select
           @change="selectedBreed"
           v-model="keyword"
           name=""
           id=""
-          class="rounded border-2 bg-white p-[0.5rem] border-gray-200 focus:ring-orange-500 focus:border-orange-500 w-full"
+          class="rounded-lg bg-white p-[1rem] border w-full"
         >
           <option value="">Filter By breeds</option>
           <option
@@ -45,12 +40,15 @@
     >
       <!--  -->
       <div
-        v-for="(img, index) of dogsBybreed"
+        v-for="(img, index) of dogsBybreed.slice(0, 20)"
         :key="index"
         class="bg-white shadow rounded-xl hover:scale-105 transition-all"
       >
         <router-link :to="{ name: 'dogDetails', params: { name: img } }">
           <img :src="img" class="rounded-t-xl w-full h-[20rem] object-cover" />
+          <div class="text-center p-3">
+            <span class="text-[#5d5398]">See more</span>
+          </div>
         </router-link>
       </div>
     </div>

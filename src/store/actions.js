@@ -25,13 +25,16 @@ export async function Signup({ commit }, payload) {
   console.log(errorMessage);
 
   if (response.status === 200) {
-    commit("signUpAuth", {
+    let tokenData = {
       email: response.data.email,
       expiresIn: response.data.expiresIn,
       token: response.data.idToken,
       refreshToken: response.data.refreshToken,
       userId: response.data.localId,
-    });
+    };
+
+    commit("signUpAuth", tokenData);
+    localStorage.setItem("userData", JSON.stringify(tokenData));
   }
   console.log(response);
 }
@@ -60,15 +63,30 @@ export async function Login({ commit }, payload) {
   console.log(errorMessage);
 
   if (response.status === 200) {
-    commit("signUpAuth", {
+    let tokenData = {
       email: response.data.email,
       expiresIn: response.data.expiresIn,
       token: response.data.idToken,
       refreshToken: response.data.refreshToken,
       userId: response.data.localId,
-    });
+    };
+
+    commit("signUpAuth", tokenData);
+    localStorage.setItem("userData", JSON.stringify(tokenData));
   }
   console.log(response);
+}
+
+// logout
+export function logout({ commit }) {
+  commit("signUpAuth", {
+    email: null,
+    expiresIn: null,
+    token: null,
+    refreshToken: null,
+    userId: null,
+  });
+  localStorage.removeItem("userData");
 }
 
 // get all random dog breed on mounted

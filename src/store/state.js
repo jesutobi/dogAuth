@@ -1,3 +1,6 @@
+const token = localStorage.getItem("userData");
+console.log(token);
+
 export default {
   dogBreed: [],
   dogs: [],
@@ -5,7 +8,7 @@ export default {
   // signup authentication
   auth: {
     email: "",
-    token: "",
+    token: token || null,
     expiresIn: "",
     userId: "",
     refreshToken: "",
