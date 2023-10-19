@@ -33,7 +33,7 @@ const isauthenticated = computed(() => store.getters.isAuthenticated);
 function logout() {
   console.log("test");
   store.dispatch("logout");
-  router.replace("/login");
+  router.replace("/intro");
 }
 </script>
 
