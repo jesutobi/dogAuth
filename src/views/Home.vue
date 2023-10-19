@@ -42,7 +42,7 @@
       <div
         v-for="(img, index) of dogsBybreed.slice(0, 20)"
         :key="index"
-        class="bg-white shadow rounded-xl hover:scale-105 transition-all"
+        class="bg-white shadow rounded-xl card-animation hover:scale-105 transition-all"
       >
         <router-link :to="{ name: 'dogDetails', params: { name: img } }">
           <img :src="img" class="rounded-t-xl w-full h-[20rem] object-cover" />
@@ -85,4 +85,21 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style scoped>
+.card-animation {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 0.5s ease-in-out forwards;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
