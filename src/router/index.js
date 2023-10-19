@@ -4,6 +4,7 @@ import DefaultLayout from "../components/DefaultLayout.vue";
 import Authentiation from "../components/AuthLayout.vue";
 import Dogdetails from "../views/DogDetails.vue";
 import Login from "../views/login.vue";
+import Intro from "../views/introview.vue";
 import Post from "../views/post.vue";
 import Signup from "../views/signup.vue";
 import store from "../store";
@@ -36,7 +37,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/intro",
     component: Authentiation,
     meta: { auth: false },
     children: [
@@ -53,6 +54,12 @@ const routes = [
         component: Signup,
         meta: { auth: false },
       },
+      {
+        path: "/intro",
+        name: "intro",
+        component: Intro,
+        meta: { auth: false },
+      },
     ],
   },
 ];
@@ -64,7 +71,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if ("auth" in to.meta && to.meta.auth && !store.getters.isAuthenticated) {
-    next("/login");
+    next("/intro");
   } else if (
     "auth" in to.meta &&
     !to.meta.auth &&
